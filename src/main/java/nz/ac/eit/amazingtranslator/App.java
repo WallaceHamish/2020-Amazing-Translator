@@ -25,6 +25,18 @@ public class App {
             System.exit(0);
         }
 
+        System.out.println("What is the language? (1-French, 2-German)");
+        String optionAsString = scanner.nextLine();
+
+        Integer option = null;
+        try {
+            option = Integer.parseInt(optionAsString);
+            System.out.println(option);
+        } catch (NumberFormatException nfe) {
+            System.out.println("The option has to be numeric");
+            System.exit(0);
+        }
+
     }
 }
 
