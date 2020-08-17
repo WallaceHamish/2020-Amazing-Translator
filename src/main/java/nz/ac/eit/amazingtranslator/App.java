@@ -12,6 +12,17 @@ public class App {
 
     public static void main(String[] args)
     {
+        List<String> germanTranslations = new ArrayList<>();
+        germanTranslations.add("Einz");
+        germanTranslations.add("Zwei");
+        germanTranslations.add("Drei");
+        //...
+        List<String> frenchTranslations = new ArrayList<>();
+        frenchTranslations.add("Un");
+        frenchTranslations.add("Deux");
+        frenchTranslations.add("Trois");
+        //...
+
         System.out.println("What is the number to translate?");
         Scanner scanner = new Scanner(System.in);
         String numberAsString = scanner.nextLine();
@@ -35,6 +46,17 @@ public class App {
         } catch (NumberFormatException nfe) {
             System.out.println("The option has to be numeric");
             System.exit(0);
+        }
+
+        //Check that the option is 1 or 2
+
+        if (option == 1) {
+            String translated = frenchTranslations.get(number - 1);
+            System.out.println(translated);
+        }
+        if (option ==2) {
+            String translated = germanTranslations.get(number - 2);
+            System.out.println(translated);
         }
 
     }
