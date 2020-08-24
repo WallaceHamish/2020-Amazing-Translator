@@ -12,16 +12,8 @@ public class App {
 
     public static void main(String[] args)
     {
-        List<String> germanTranslations = new ArrayList<>();
-        germanTranslations.add("Einz");
-        germanTranslations.add("Zwei");
-        germanTranslations.add("Drei");
-        //...
-        List<String> frenchTranslations = new ArrayList<>();
-        frenchTranslations.add("Un");
-        frenchTranslations.add("Deux");
-        frenchTranslations.add("Trois");
-        //...
+        TranslationDictionaries dictionaries=new TranslationDictionaries();
+        dictionaries.initializeDictionaries();
 
         System.out.println("What is the number to translate?");
         Scanner scanner = new Scanner(System.in);
@@ -50,13 +42,13 @@ public class App {
 
         //Check that the option is 1 or 2
 
-        if (option == 1) {
-            String translated = frenchTranslations.get(number - 1);
+        try {
+            String translated = dictionaries.getTranslation(number - 1,option);
             System.out.println(translated);
-        }
-        if (option ==2) {
-            String translated = germanTranslations.get(number - 2);
-            System.out.println(translated);
+        } catch (LanguageNotSupportedException lnse){
+            System.out.println("Language not supported");
+        } catch (NumberOutOfRangeException noore) {
+            System.out.println("Numbers have to be between 1 and 30 included");
         }
 
     }
