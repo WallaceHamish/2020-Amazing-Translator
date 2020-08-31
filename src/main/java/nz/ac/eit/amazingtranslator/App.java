@@ -13,6 +13,7 @@ public class App {
     public static void main(String[] args)
     {
         TranslationDictionaries dictionaries=new TranslationDictionaries();
+        dictionaries.setDictionaries(new RealOneDictionary());
         dictionaries.initializeDictionaries();
 
         System.out.println("What is the number to translate?");

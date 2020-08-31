@@ -5,39 +5,23 @@ import java.util.List;
 
 public class TranslationDictionaries {
 
-    private List<String> germanTranslations = new ArrayList<>();
-    private List<String> frenchTranslations = new ArrayList<>();
+    private IDictionaries dictionaries;
 
-    public Integer initializeDictionaries() {
+    public boolean initializeDictionaries() {
 
-        germanTranslations.add("Einz");
-        germanTranslations.add("Zwei");
-        germanTranslations.add("Drei");
+        dictionaries.initializeDatasource();
         //...
 
-        frenchTranslations.add("Un");
-        frenchTranslations.add("Deux");
-        frenchTranslations.add("Trois");
-        //...
-        //We return the size of the translation for the purpose of testing but we don't use it
-        //in the application itself
-
-        return frenchTranslations.size();
+        return dictionaries.isInitialized();
     }
 
     public String getTranslation(Integer number, Integer language) throws LanguageNotSupportedException, NumberOutOfRangeException {
 
-        if (number<1 || number>30){
-            throw new NumberOutOfRangeException();
-        }
+        return dictionaries.getTranslation(number,language);
 
-        if (language == 1) {
-            return frenchTranslations.get(number - 1);
-        } else if (language == 2) {
-            return germanTranslations.get(number - 1);
-        } else {
-            throw new LanguageNotSupportedException();
-        }
+    }
 
+    public void setDictionaries(IDictionaries dictionaries) {
+        this.dictionaries = dictionaries;
     }
 }
